@@ -55,7 +55,7 @@ async function buildTask(tasks) {
     let tasksIdArray = Object.keys(tasks);
 
     for (let i = 0; i < tasksIdArray.length; i++) {
-        let shortDescription = tasks[tasksIdArray[i]]['description'];
+        let shortDescription = tasks[tasksIdArray[i]]['description'] || '';
         let subTasksDone = checkSubTasksDone(tasks[tasksIdArray[i]]['subtasks']);
         let subTasksTotal = tasks[tasksIdArray[i]]['subtasks'] ? tasks[tasksIdArray[i]]['subtasks'].length : 0;
         let usersIcons = (Array.isArray(tasks[tasksIdArray[i]]['users'])) ? await getUserIconsList(tasks[tasksIdArray[i]]['users'], 'userIconForSmallTask') : [`<div></div>`];
@@ -88,7 +88,10 @@ function subTaskIsEmpty(taskId, subtasks) {
 async function removeSubtaskStatus() {
     await pause(50);
     for (let index = 0; index < subTaskNone.length; index++) {
-        document.getElementById('subTaskStatus-' + subTaskNone[index]).classList.add('d-none')        
+        const el = document.getElementById('subTaskStatus-' + subTaskNone[index]);
+        if (el) {
+            el.classList.add('d-none');
+        }
     }
 }
 

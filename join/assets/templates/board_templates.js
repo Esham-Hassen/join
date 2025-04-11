@@ -24,7 +24,9 @@ function boardTaskTemplate(name, shortDescription, categoryColor, category, subT
         </div>
         <div class="flex-column taskContainerInnerPadding">    
             <a class="taskTitle">${name}</a>
-            <a style="color:#A8A8A8;padding-top:8px;font-size:16px;">${shortDescription.slice(0, 42)}...</a>
+            <a style="color:#A8A8A8;padding-top:8px;font-size:16px;">${typeof shortDescription === 'string' ? shortDescription.slice(0, 42) : ''}...</a>
+
+
         </div>
         <div class="taskContainerInnerPadding subtasksStatus" id="subTaskStatus-${taskId}">
             <progress class="progressBar" id="progressBar" value="${subTasksDone}" max="${subTasksTotal}"></progress>

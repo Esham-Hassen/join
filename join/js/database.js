@@ -8,10 +8,10 @@ let jsonTaskTemplate = {
         "type": "",
         "users": ""}
 
-
-// const baseUrl = 'https://join-c4326-default-rtdb.europe-west1.firebasedatabase.app/'
-
-const baseUrl = 'https://login-project-74f5b-default-rtdb.europe-west1.firebasedatabase.app/'
+/**
+ * Url for database
+ */
+const baseUrl = 'https://join-55163-default-rtdb.europe-west1.firebasedatabase.app/';
 
 /**
  * gets all Tasks from the database
