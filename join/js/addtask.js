@@ -49,18 +49,17 @@ async function initializeAddTaskPage() {
 async function getUserNames() {
     const usersJson = await getAllUsers();
     const tasksIdArray = Object.keys(usersJson);
-    let users = [];
-    let userIds = [];
-    let userColors = [];
-    let userInitials = [];
+    let users = [], userIds = [], userColors = [], userInitials = [];
 
-    for (let index = 0; index < tasksIdArray.length; index++) {
-        const userName = usersJson[tasksIdArray[index]]['name'];
-        users.push(userName);
-        userIds.push(tasksIdArray[index]);
-        const initials = userName.split(' ').map(name => name[0]).join('');
-        userInitials.push(initials);
-        userColors.push(usersJson[tasksIdArray[index]]['color']);
+    for (let i = 0; i < tasksIdArray.length; i++) {
+        const userId = tasksIdArray[i];
+        const user = usersJson[userId];
+        if (!user?.name) continue;
+
+        users.push(user.name);
+        userIds.push(userId);
+        userInitials.push(user.name.split(' ').map(n => n[0]).join(''));
+        userColors.push(user.color || '#ccc');
     }
     return [users, userIds, userColors, userInitials];
 }

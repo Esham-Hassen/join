@@ -93,9 +93,10 @@ function emptyTaskLists() {
  * @returns - intials e.g. AM
  */
 function getUserInitials(userName) {
+    if (!userName) return "";
     let names = userName.split(" ");
     let initials = names.map(names => names.charAt(0)).join("");
-    return (initials);
+    return initials;
 }
 
 

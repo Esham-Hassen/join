@@ -41,6 +41,10 @@ async function buildContactsPage() {
  * @param {string} userId - user id
  */
 function buildContactListEntry(userData, userId) {
+    if (!userData['name']) {
+        console.warn(`User ${userId} has no name!`);
+        return; // Skip this user or handle accordingly
+    }
     let userIcon = getUserIcons(userData);
     let name = userData['name'];
     let email = userData['email'];
@@ -56,11 +60,10 @@ function buildContactListEntry(userData, userId) {
  * @returns - delivers the user icon
  */
 function getUserIcons(userInformations) {
-    let userInitials = getUserInitials(userInformations['name']);
-    let icon = buildUserIcon(userInitials, userInformations['color'])
-    return (icon);
+    let userInitials = getUserInitials(userInformations['name']);  // Handle undefined name
+    let icon = buildUserIcon(userInitials, userInformations['color']);
+    return icon;
 }
-
 
 /**
  * Sorts the user to the correct list to be sorted by alpahbet
