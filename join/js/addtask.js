@@ -178,15 +178,9 @@ function trackSelectedContacts() {
 
     document.getElementById('assigned-to-count').textContent = `${selectedCount} contact${selectedCount !== 1 ? 's' : ''} assigned`;
     document.getElementById('selected-contacts').innerHTML = selectedHtml;
-    //updateSelectedContactsInForm();
 
-    // Add or remove the class based on selection count
     const taskRightColumn = document.querySelector('.task-right-column');
-    if (selectedCount > 0) {
-        taskRightColumn.classList.add('selected-user');
-    } else {
-        taskRightColumn.classList.remove('selected-user');
-    }
+    if (taskRightColumn) taskRightColumn.classList.toggle('selected-user', selectedCount > 0);
 }
 
 
